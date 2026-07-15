@@ -37,9 +37,6 @@ public class Product extends AuditableEntity {
     @Column(name = "image_url")
     private String imageUrl;
 
-    @Column(nullable = false)
-    private boolean available = true;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
@@ -54,7 +51,7 @@ public class Product extends AuditableEntity {
         this.category = category;
     }
 
-    public void update(String name, String description, String imageUrl, Boolean available, Category category) {
+    public void update(String name, String description, String imageUrl, Category category) {
         if (name != null) {
             this.name = name;
         }
@@ -63,9 +60,6 @@ public class Product extends AuditableEntity {
         }
         if (imageUrl != null) {
             this.imageUrl = imageUrl;
-        }
-        if (available != null) {
-            this.available = available;
         }
         if (category != null) {
             this.category = category;
