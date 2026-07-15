@@ -57,7 +57,7 @@ public class CategoryService {
         }
 
         category.update(request.name(), request.active());
-        return CategoryResponse.from(category);
+        return CategoryResponse.from(categoryRepository.saveAndFlush(category));
     }
 
     private Category findCategoryOrThrow(Long id) {
